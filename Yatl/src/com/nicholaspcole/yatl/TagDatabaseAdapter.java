@@ -49,7 +49,7 @@ public class TagDatabaseAdapter {
 
     public Cursor getAllTags() {
         return this.database.query(Tag.TABLE_NAME, new String[] { Tag._ID,
-                Tag.COLUMN_NAME_LABEL }, null, null, null, null, null);
+                Tag.COLUMN_NAME_LABEL }, null, null, null, null, null, null);
     }
 
     public Cursor getTag(long rowId) {
