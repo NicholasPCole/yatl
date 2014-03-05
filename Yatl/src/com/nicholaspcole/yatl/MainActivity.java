@@ -14,12 +14,16 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
     private String[] destinations;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
     private ListView drawerList;
+
+    private DatabaseAdapter theDatabase;
+    private static TagDatabaseAdapter theTags;
 
     /**
      * Fragment that appears in the content frame (of the drawer layout) to show
@@ -81,6 +85,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Set up the navigation drawer.
+
         destinations = getResources().getStringArray(R.array.destinations);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -112,6 +118,19 @@ public class MainActivity extends Activity {
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
+
+        // Connect to the database.
+
+        theDatabase = new DatabaseAdapter(this);
+        theTags = new TagDatabaseAdapter(this);
+        theTags.open();
+
+        theTags.createTag("In-Class Exercise");
+        theTags.createTag("Weekly Assignment");
+        theTags.createTag("Semester Project");
+        Toast.makeText(this,
+                "There are " + theTags.getAllTags().getCount() + " tags.",
+                Toast.LENGTH_SHORT).show();
     }
 
     @Override
