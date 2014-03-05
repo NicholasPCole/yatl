@@ -5,6 +5,7 @@ import com.nicholaspcole.yatl.DatabaseContract.Tag;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class DatabaseAdapter {
     public static final String DATABASE_NAME = "Yatl.db";
@@ -13,7 +14,7 @@ public class DatabaseAdapter {
     private static final String SQL_CREATE_TABLE_TAG = "CREATE TABLE "
             + Tag.TABLE_NAME + " (" + Tag._ID
             + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + Tag.COLUMN_NAME_LABEL + " TEXT";
+            + Tag.COLUMN_NAME_LABEL + " TEXT);";
 
     private final Context context;
     private DatabaseHelper databaseHelper;
