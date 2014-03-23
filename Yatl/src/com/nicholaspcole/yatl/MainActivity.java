@@ -48,7 +48,13 @@ public class MainActivity extends Activity {
                             container, false);
                     break;
                 case 1:
+                    rootView = inflater.inflate(R.layout.fragment_blank,
+                            container, false);
+                    break;
                 case 2:
+                    rootView = inflater.inflate(R.layout.fragment_tags,
+                            container, false);
+                    break;
                 case 3:
                 case 4:
                 default:
